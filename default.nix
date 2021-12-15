@@ -1,4 +1,6 @@
-{ stdenv, libX11, libXft, libXinerama }:
+{ stdenv, lib, libX11, libXft, libXinerama }:
+
+with lib;
 
 stdenv.mkDerivation {
   name = "dwm-head";
@@ -12,7 +14,7 @@ stdenv.mkDerivation {
     substituteInPlace config.mk --replace '/usr/local' $out
   '';
 
-  meta = with stdenv.lib; {
+  meta = {
     description = "X's dynamic menu";
     homepage = https://tools.suckless.org/dmenu/;
     license = licenses.mit;
